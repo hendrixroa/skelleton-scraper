@@ -23,3 +23,6 @@ And more...
 - Run `yarn` to install dependencies
 - Run `APP=scraper make build_docker_local`
 - Enjoy!
+
+#### Demo
+![Drag Racing](./demo/demo.gif)
