@@ -21,6 +21,5 @@ And more...
 #### How to use
 
 - Run `yarn` to install dependencies
-- Run `APP=api make dev_app`
-- Go to [http://localhost:3000/docs](http://localhost:5000/api-docs) to play with the API
+- Run `APP=scraper make build_docker_local`
 - Enjoy!

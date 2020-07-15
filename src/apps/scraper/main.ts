@@ -13,7 +13,7 @@ async function bootstrap() {
 
   try {
     const data = await scraper.scrape();
-    logService.info('DATA', data);
+    console.log(data);
   } catch (e) {
     logService.error('error', e);
   } finally {

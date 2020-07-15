@@ -34,12 +34,8 @@ build_docker:
 	docker build -t skelleton:latest --build-arg APP="$(APP)" --cache-from $$IMAGE_REGISTRY . -q
 
 build_docker_local:
-	docker build -t skelleton:latest --build-arg APP="$(APP)" . -q
-
-build_docker_gitlab:
-	docker pull $$IMAGE_REGISTRY && \
-	docker build -t $$IMAGE_REGISTRY --cache-from $$IMAGE_REGISTRY . -q && \
-    docker push $$IMAGE_REGISTRY \
+	docker build -t skelleton:latest --build-arg APP="$(APP)" .
+	docker-compose up
 
 ################################################################################
 # MIGRATE

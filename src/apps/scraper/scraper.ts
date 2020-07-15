@@ -47,8 +47,8 @@ export class Scraper {
       const data = allNamesRepos.map((repo: any) => {
         const obj = {
           name: repo.name,
-          starsToday: allStarsRepos[counter],
-          totalStars: allStarsRepos[counter + 1],
+          starsToday: allStarsRepos[counter].stars,
+          totalStars: allStarsRepos[counter + 1].stars,
         };
         counter = counter + 2;
         return obj;
