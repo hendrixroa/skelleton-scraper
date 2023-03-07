@@ -1,0 +1,14 @@
+{
+  "name": "skelleton-scraper",
+  "version": "0.0.1",
+  "description": "Skelleton scraper ready to use to integrate in your project",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx ts-node  src/apps/scraper/main.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "puppeteer": "^19.7.3"
+  }
+}
