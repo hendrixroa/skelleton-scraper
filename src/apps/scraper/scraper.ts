@@ -20,39 +20,40 @@ export class Scraper {
       waitUntil: 'networkidle0',
     });
 
-    const data = await page.evaluate(() => {
+    const resultData = await page.evaluate(() => {
 
-      const allNamesRepos = Array.from(
-        document.querySelectorAll(
-          '.Box-row h1.lh-condensed a',
-        ),
-      ).map((item: HTMLElement | any) => {
+      const allReposArticles = document.querySelectorAll(
+        '.Box-row h1.lh-condensed a',
+      );
+      const allReposArray = Array.from(allReposArticles);
+      const allNamesRepos = allReposArray.map((item: HTMLElement | any) => {
         return { name: item.innerText };
       });
 
       const regexMatchDigits = /\d+/g;
+      const allStarArticles = document.querySelectorAll(
+        '.Box-row .d-inline-block.float-sm-right',
+      );
+      const allStarReposArray = Array.from(allStarArticles);
+      const allStarsRepos = allStarReposArray.map((item: HTMLElement | any) => {
 
-      const allStarsRepos = Array.from(
-        document.querySelectorAll(
-          '.Box-row .d-inline-block.float-sm-right',
-        ),
-      ).map((item: HTMLElement | any) => {
         const starDigits = item.innerText.match(regexMatchDigits);
         return { stars: Number(starDigits[0]) };
+
       });
 
-
-      const data = allNamesRepos.map((repo: any, index: number) => {
+      const dataMerged = allNamesRepos.map((repo: any, index: number) => {
         const obj = {
           name: repo.name,
           starsToday: allStarsRepos[index].stars,
         };
         return obj;
       });
-      return data;
+
+      return dataMerged;
     });
 
     this.browser.closeBrowser();
-    return data;
+    return resultData;
   };
 }
